@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "todo": "Купить продукты",
+    "completed": false
+  },
+  {
+    "id": 2,
+    "todo": "Позвонить маме",
+    "completed": true
+  },
+  {
+    "id": 3,
+    "todo": "Завершить проект",
+    "completed": false
+  },
+  {
+    "id": 4,
+    "todo": "Пойти в спортзал",
+    "completed": true
+  },
+  {
+    "id": 5,
+    "todo": "Прочитать книгу",
+    "completed": false
+  }
+]
