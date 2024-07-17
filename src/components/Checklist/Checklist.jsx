@@ -4,7 +4,19 @@ import ChecklistItem from "./ChecklistItem";
 
 const Checklist = () => {
   const [todos, setTodos] = useState(checklistData);
-  const [newTodoValue, setNewTodoValue] = useState("");
+  const [newTodoValue, setNewTodoValue] = useState(() => {
+    const savedTodos = JSON.parse(window.localStorage.getItem("todos"));
+    if (savedTodos?.length) {
+      return savedTodos;
+    }
+    return [];
+  });
+
+  //local storage
+  useEffect(() => {
+    window.localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
   // Работа кнопки удалить
   const handleDeleteTodo = (id) => {
     setTodos((prev) => prev.filter((item) => item.id !== id));
