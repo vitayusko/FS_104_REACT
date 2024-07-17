@@ -1,8 +1,16 @@
+import Header from "./Header/Header";
+import Footer from "./Footer/Footer";
+import Message from "./Message/Message";
+
+
 const App = () => {
   return (
-  <div>
-    <h1>Welcom to React</h1>
-    </div>
+      <main>
+          <Header />
+          <Message author = 'petro' message = 'find a job'/>
+          <Footer/>
+          
+  </main>
   );
 }
 
