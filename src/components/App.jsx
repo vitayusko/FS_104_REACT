@@ -2,7 +2,7 @@ import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
 import Message from "./Message/Message";
 import Checklist from "./Checklist/Checklist";
-import Uncontroledforms from "./Forms/Uncontroledforms";
+import UncontrolledForms from "./Forms/UncontrolledForms";
 
 const App = () => {
   return (
@@ -11,7 +11,7 @@ const App = () => {
           <Message author='petro' message='find a job' />
           <Footer /> */}
       {/* <Checklist /> */}
-      <Uncontroledformsledforms />
+      <UncontrolledForms />
     </main>
   );
 };

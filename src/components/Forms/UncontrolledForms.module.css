@@ -1,0 +1,32 @@
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+}
+.input {
+  padding: 5px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 2px 2px rgba(128, 128, 128, 0.176);
+}
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  &span {
+    font-weight: bold;
+  }
+}
+.btn {
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 5px 20px;
+  margin-bottom: 20px;
+}
