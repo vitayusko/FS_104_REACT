@@ -6,6 +6,13 @@ import UncontrolledForms from "./Forms/UncontrolledForms";
 import ControlledForms from "./Forms/CcontrolledForms";
 
 const App = () => {
+  const register = (data) => {
+    console.log("Data register in progres");
+    setTimeout(() => {
+      console.log("register done");
+      console.log(data);
+    }, 3000);
+  };
   return (
     <main>
       {/* <Header />
@@ -13,7 +20,7 @@ const App = () => {
           <Footer /> */}
       {/* <Checklist /> */}
       {/* <UncontrolledForms /> */}
-      <ControlledForms />
+      <ControlledForms register={register} />
     </main>
   );
 };
