@@ -4,15 +4,16 @@ import Message from "./Message/Message";
 import Checklist from "./Checklist/Checklist";
 import UncontrolledForms from "./Forms/UncontrolledForms";
 import ControlledForms from "./Forms/CcontrolledForms";
+import UserForm from "./UserForm/UserForm";
 
 const App = () => {
-  const register = (data) => {
-    console.log("Data register in progres");
-    setTimeout(() => {
-      console.log("register done");
-      console.log(data);
-    }, 3000);
-  };
+  // const register = (data) => {
+  //   console.log("Data register in progress");
+  //   setTimeout(() => {
+  //     console.log("register done");
+  //     console.log(data);
+  //   }, 3000);
+  // };
   return (
     <main>
       {/* <Header />
@@ -20,7 +21,8 @@ const App = () => {
           <Footer /> */}
       {/* <Checklist /> */}
       {/* <UncontrolledForms /> */}
-      <ControlledForms register={register} />
+      {/* <ControlledForms register={register} /> */}
+      <UserForm />
     </main>
   );
 };
