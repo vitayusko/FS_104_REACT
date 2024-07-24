@@ -6,7 +6,7 @@ import UncontrolledForms from "./Forms/UncontrolledForms";
 import ControlledForms from "./Forms/CcontrolledForms";
 import UserForm from "./UserForm/UserForm";
 import List from "./List/List";
-import axios from "axios";
+import { fetchNews } from "../services/api";
 
 const App = () => {
   const [hits, setHits] = useState([]);
@@ -14,10 +14,8 @@ const App = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const res = await axios.get(
-          "https://hn.algolia.com/api/v1/search?query=react"
-        );
-        setHits(res.data.hits);
+        const response = await fetchNews("react");
+        setHits(response.hits);
       } catch (error) {
         console.log(error);
       }
