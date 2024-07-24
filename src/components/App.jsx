@@ -2,34 +2,40 @@ import React, { useState, useEffect } from "react";
 import { fetchNews } from "../services/api";
 import List from "./List/List";
 import { SearchBar } from "./SearchBar/SearchBar";
-import { RotatingLines } from "react-loader-spinner";
-import Loader from "./Loader/Loader";
+import Loader from "./Loader/Loader"; // Ensure you have a Loader component
 
 const App = () => {
   const [hits, setHits] = useState([]);
   const [query, setQuery] = useState("react");
   const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [page, setPage] = useState(0);
 
   useEffect(() => {
     const getData = async () => {
-      setIsLoading(true); // Устанавливаем isLoading в true перед началом загрузки данных
+      setIsLoading(true);
+      setIsError(false);
       try {
-        const data = await fetchNews(query, 25);
-        setHits(data.hits);
+        const data = await fetchNews(query, 5, page);
+        console.log("Fetched data:", data); // Проверка данных
+        setHits((prev) => [...prev, ...data.hits]);
       } catch (error) {
         console.log(error);
+        setIsError(true);
       } finally {
-        setIsLoading(false); // Устанавливаем isLoading в false после завершения загрузки данных
+        setIsLoading(false);
       }
     };
     getData();
-  }, [query]);
+  }, [query, page]);
 
   return (
     <main>
-      <SearchBar setQuery={setQuery} /> {/* Передаем setQuery в SearchBar */}
+      <SearchBar setQuery={setQuery} />
       {isLoading && <Loader />}
+      {isError && <h2>Something went wrong...</h2>}
       <List items={hits} />
+      <button onClick={() => setPage((prev) => prev + 1)}>Load more</button>
     </main>
   );
 };
