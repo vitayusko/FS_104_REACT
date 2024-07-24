@@ -10,6 +10,7 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [page, setPage] = useState(0);
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
     const getData = async () => {
@@ -19,6 +20,7 @@ const App = () => {
         const data = await fetchNews(query, 5, page);
         console.log("Fetched data:", data); // Проверка данных
         setHits((prev) => [...prev, ...data.hits]);
+        setTotal(data.nbPages);
       } catch (error) {
         console.log(error);
         setIsError(true);
@@ -37,11 +39,14 @@ const App = () => {
 
   return (
     <main>
+      {total > page && !isLoading && (
+        <button onClick={() => setPage((prev) => prev + 1)}>Load more</button>
+      )}
+
       <SearchBar setQuery={handleQuery} />
       {isLoading && <Loader />}
       {isError && <h2>Something went wrong...</h2>}
       <List items={hits} />
-      <button onClick={() => setPage((prev) => prev + 1)}>Load more</button>
     </main>
   );
 };
