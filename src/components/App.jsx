@@ -29,9 +29,15 @@ const App = () => {
     getData();
   }, [query, page]);
 
+  const handleQuery = (query) => {
+    setQuery(query);
+    setHits([]);
+    setPage(0);
+  };
+
   return (
     <main>
-      <SearchBar setQuery={setQuery} />
+      <SearchBar setQuery={handleQuery} />
       {isLoading && <Loader />}
       {isError && <h2>Something went wrong...</h2>}
       <List items={hits} />
