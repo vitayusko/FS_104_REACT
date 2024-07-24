@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { fetchNews } from "../services/api";
 import List from "./List/List";
 import { SearchBar } from "./SearchBar/SearchBar";
+import { RotatingLines } from "react-loader-spinner";
+import Loader from "./Loader/Loader";
 
 const App = () => {
   const [hits, setHits] = useState([]);
@@ -26,7 +28,7 @@ const App = () => {
   return (
     <main>
       <SearchBar setQuery={setQuery} /> {/* Передаем setQuery в SearchBar */}
-      {isLoading && <h1>loadingData....</h1>}
+      {isLoading && <Loader />}
       <List items={hits} />
     </main>
   );
